@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Relationship Tarot</string>
+    <string name="action_settings">About</string>
+    <string name="first_partner">1st Partner </string>
+    <string name="second_partner">2nd Partner </string>
+    <string name="intro">Enter birth dates of:</string>
+    <string name="go">get your relationship card</string>
+    <string name="ebook">E-book coming soon!</string>
+    <string name="date_format">dd. MM. yyyy.</string>
+    <string name="error_enter_both_dates">Please enter both dates.</string>
+</resources>
