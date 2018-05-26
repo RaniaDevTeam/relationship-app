@@ -1,11 +1,16 @@
 <resources>
-    <string name="app_name">Relationship Tarot</string>
-    <string name="action_settings">About</string>
-    <string name="first_partner">1st Partner </string>
-    <string name="second_partner">2nd Partner </string>
-    <string name="intro">Enter birth dates of:</string>
-    <string name="go">get your relationship card</string>
-    <string name="ebook">E-book coming soon!</string>
+    <string name="app_name">Tarot: ogledalo vaše veze</string>
+    <string name="action_settings">O nama</string>
+    <string name="first_partner">Prvi partner</string>
+    <string name="second_partner">Drugi partner</string>
+    <string name="intro">Unesite datume rođenja:</string>
+    <string name="go">Prikaži kartu veze</string>
+    <string name="ebook">E-knjiga stiže uskoro!</string>
     <string name="date_format">dd. MM. yyyy.</string>
-    <string name="error_enter_both_dates">Please enter both dates.</string>
+    <string name="error_enter_both_dates">Unesite oba datuma.</string>
+    <string name="picker_cancel">Odustani</string>
+    <string name="picker_set">OK</string>
+    <string name="month_c">MJESEC</string>
+    <string name="day_c">DAN</string>
+    <string name="year_c">GODINA</string>
 </resources>

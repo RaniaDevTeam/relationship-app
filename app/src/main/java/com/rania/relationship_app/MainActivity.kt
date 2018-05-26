@@ -15,6 +15,8 @@ import android.content.DialogInterface
 import android.content.Intent
 import java.text.DateFormat
 
+// god dammit
+// git push https://RaniaDevTeam:m6sqrivih@github.com/RaniaDevTeam/relationship-app.git
 
 class MainActivity : AppCompatActivity() {
     private lateinit var df: DateFormat
@@ -72,7 +74,10 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_settings -> {
+                about()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -87,7 +92,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun about() { // TODO: construct prettier dialog
         val builder = AlertDialog.Builder(this)
-        builder.setMessage("Copyright (c) Rania Enterprise Ltd.")
+        builder.setMessage("Copyright (c) Rania Udruga, 2018")
                 .setCancelable(false)
                 .setPositiveButton("OK") { _, _ ->
                     // just close it
