@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">Tarot: ogledalo vaše veze</string>
-    <string name="action_settings">O nama</string>
-    <string name="first_partner">Prvi partner</string>
-    <string name="second_partner">Drugi partner</string>
+    <string name="app_name">Tarot ljubavi</string>
+    <string name="chapter_activity_name">Karta Vaše veze</string>
+    <string name="action_settings">Kontaktirajte nas</string>
+    <string name="first_partner">Ja</string>
+    <string name="second_partner">Partner</string>
     <string name="intro">Unesite datume rođenja:</string>
     <string name="go">Prikaži kartu veze</string>
     <string name="ebook">E-knjiga stiže uskoro!</string>
@@ -13,4 +14,10 @@
     <string name="month_c">MJESEC</string>
     <string name="day_c">DAN</string>
     <string name="year_c">GODINA</string>
+    <string name="email_subject">Astro/tarot savjetovanje</string>
+    <string name="email_to">rania.udruga@gmail.com</string>
+    <string name="email_body">Draga Rania, </string>
+    <string name="copyright">Copyright \u00A9: Rania Udruga</string>
+    <string name="impressum">Tarot/astro analize, horoskopi za tiskovine i web stranice, PROBLEM SOLVING tretmani kojima se rješavaju traume, fobije i problemi svake vrste, trajno i u nekoliko minuta. Probajte!</string>
+
 </resources>

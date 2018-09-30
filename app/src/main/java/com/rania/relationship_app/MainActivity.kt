@@ -1,19 +1,32 @@
 package com.rania.relationship_app
 
+import android.app.Activity
 import android.app.AlertDialog
+import android.content.DialogInterface
+import android.content.Intent
+import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
+import android.text.SpannableString
+import android.text.TextPaint
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.TextView
 import com.codetroopers.betterpickers.datepicker.DatePickerBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
-import android.content.DialogInterface
-import android.content.Intent
-import java.text.DateFormat
+import android.widget.LinearLayout
+
 
 // god dammit
 // git push https://RaniaDevTeam:m6sqrivih@github.com/RaniaDevTeam/relationship-app.git
@@ -52,6 +65,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        link_ebook.setOnClickListener { _ ->
+            about()
+        }
+
+        if (querentDOB == null) input_first_partner.text.clear()
+        if (partnerDOB == null) input_second_partner.text.clear()
+
         btn_calculate.setOnClickListener { view ->
             if (querentDOB == null || partnerDOB == null) {
                 alertDatesNotSet()
@@ -60,8 +80,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -91,13 +109,51 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun about() { // TODO: construct prettier dialog
+        val tx1 = TextView(this)
+        val container = FrameLayout(this)
+        val layoutParams = FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.WRAP_CONTENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT)
+        layoutParams.setMargins(50, 50, 50, 50)
+        tx1.layoutParams = layoutParams
+        container.addView(tx1)
+        tx1.autoLinkMask = Activity.RESULT_OK
+        tx1.movementMethod = LinkMovementMethod.getInstance()
+
         val builder = AlertDialog.Builder(this)
-        builder.setMessage("Copyright (c) Rania Udruga, 2018")
                 .setCancelable(false)
                 .setPositiveButton("OK") { _, _ ->
                     // just close it
                 }
+                .setView(container)
         val alert = builder.create()
+
+        val clickableSpan: ClickableSpan = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                val intent = Intent(Intent.ACTION_VIEW)
+                val email = getString(R.string.email_to)
+                val subject = getString(R.string.email_subject)
+                val body = getString(R.string.email_body)
+                val data = Uri.parse("mailto:$email?subject=$subject&body=$body")
+                intent.data = data
+                startActivity(intent)
+                alert.dismiss()
+            }
+
+            override fun updateDrawState(ds: TextPaint) {
+                super.updateDrawState(ds)
+                ds.color = Color.BLUE
+                ds.isUnderlineText = true
+            }
+        }
+        val copyright = getString(R.string.copyright)
+        val email = getString(R.string.email_to)
+        val impressum = getString(R.string.impressum)
+        val msg = "$copyright\n$email\n\n$impressum"
+        val spannableMsg = SpannableString(msg)
+        spannableMsg.setSpan(clickableSpan, msg.indexOf(email), msg.indexOf(email) + email.length, 0);
+
+        tx1.text = spannableMsg
         alert.show()
     }
 
@@ -132,4 +188,5 @@ class MainActivity : AppCompatActivity() {
         dpb.show()
 
     }
+
 }
