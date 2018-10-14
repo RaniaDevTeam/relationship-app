@@ -3,7 +3,7 @@ body {
     font-size:100%;
     line-height:1.5;
     margin:10px;
-    font-family: 'Merriweather', Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans;
 }
 
 header {
@@ -19,12 +19,12 @@ section {
 }
 
 h1, h2{
-    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-family: 'Roboto';
     color: #27272E;
 }
 
 h1 span {
-    font-family: 'Merriweather', Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans;
     font-style:italic;
 }
 

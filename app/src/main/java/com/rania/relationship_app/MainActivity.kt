@@ -8,7 +8,6 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.text.SpannableString
 import android.text.TextPaint
 import android.text.method.LinkMovementMethod
@@ -16,23 +15,19 @@ import android.text.style.ClickableSpan
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.codetroopers.betterpickers.datepicker.DatePickerBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
-import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
-import android.widget.LinearLayout
 
 
-// god dammit
-// git push https://RaniaDevTeam:m6sqrivih@github.com/RaniaDevTeam/relationship-app.git
+// git push https://RaniaDevTeam:xxx@github.com/RaniaDevTeam/relationship-app.git
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var df: DateFormat
+    private lateinit var df: SimpleDateFormat
 
     private var querentDOB: DateEntry? = null
     private var partnerDOB: DateEntry? = null
@@ -44,6 +39,9 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        supportActionBar?.setDisplayShowHomeEnabled(false)
 
         input_first_partner.setOnClickListener { view ->
             runDatePicker { year, month, day ->
@@ -66,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         link_ebook.setOnClickListener { _ ->
-            about()
+            contactUs()
         }
 
         if (querentDOB == null) input_first_partner.text.clear()
@@ -87,19 +85,6 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> {
-                about()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
     private fun formatDate(dateEntry: DateEntry): String {
         val date = GregorianCalendar(
                 dateEntry.year,
@@ -108,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         return df.format(date)
     }
 
-    private fun about() { // TODO: construct prettier dialog
+    private fun contactUs() {
         val tx1 = TextView(this)
         val container = FrameLayout(this)
         val layoutParams = FrameLayout.LayoutParams(
@@ -187,6 +172,11 @@ class MainActivity : AppCompatActivity() {
                 }
         dpb.show()
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
 }
